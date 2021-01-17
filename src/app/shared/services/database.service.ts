@@ -13,7 +13,7 @@ export class DatabaseService {
   url: string;
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.url = 'https://angular-authentication-34d68-default-rtdb.firebaseio.com/';
+    this.url = 'YOUR_REALTIME_DATABASE_URL';
   }
 
   addPost(inputTitle: string, inputContent: string) {
