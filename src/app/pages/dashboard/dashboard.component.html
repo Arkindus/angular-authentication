@@ -1,0 +1,78 @@
+<div class="container text-right" style="margin-top: 2rem;">
+  <button class="btn btn-outline-danger text-right" (click)="authService.signOut()">
+    Logout
+  </button>
+  <div class="container text-left mb-4">
+    <div class="row">
+      <h5 class="mr-2">
+        Signed in as:
+      </h5>
+      <h5 class="text-success">
+        {{ authService.userEmail }}
+      </h5>
+    </div>
+  </div>
+  <div class="container text-left">
+    <div class="row">
+      <div class="col-xl-12">
+        <form class="card border-primary mx-auto" style="max-width: 50rem;" (ngSubmit)="onPostSubmitted()"
+          [formGroup]="postForm">
+          <h3 class="card-header bg-primary text-light">
+            New Post
+          </h3>
+          <div class="card-body">
+            <input class="form-control mb-4" type="text" formControlName="title" placeholder="Title">
+            <h1></h1>
+            <textarea class="form-control mb-4" rows="2" cols="10" formControlName="content" placeholder="Content">
+              </textarea>
+            <h1></h1>
+            <button class="btn btn-outline-success" type="submit" [disabled]="!postForm.valid">
+              Post
+            </button>
+          </div>
+        </form>
+        <hr class="mt-5">
+        <div class="row">
+          <div class="col-xl-12">
+            <h4 class="mb-3">
+              Your Posts
+            </h4>
+            <p *ngIf="postsArray.length < 1">
+              No posts yet!</p>
+            <div *ngIf="postsArray.length > 0">
+              <div class="card border-dark mx-auto mb-5" style="max-width: 50rem;"
+                *ngFor="let post of postsArray; let i = index">
+                <div>
+                  <h5 class="card-header bg-dark text-light">{{ post.title }}</h5>
+                  <div class="card-body">
+                    <div class="card-title">{{ post.content }}</div>
+                    <button type="button" class="btn btn-outline-primary btn-space car" (click)="onEditPressed(i)">
+                      Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="onDeletePressed(i)">
+                      Remove
+                    </button>
+                    <hr class="mb-4" *ngIf="editControl && postsArray[editPostNumber].id===post.id">
+                    <div *ngIf="editControl && postsArray[editPostNumber].id===post.id">
+                      <form (ngSubmit)="onUpdatePressed(i)" [formGroup]="updateForm">
+                        <input class="form-control mb-4" type="text" formControlName="updatedTitle" placeholder="Title">
+                        <h1></h1>
+                        <textarea class="form-control mb-4" rows="2" cols="10" formControlName="updatedContent"
+                          placeholder="Content">
+                      </textarea>
+                        <h1></h1>
+                        <button type="submit" class="btn btn-outline-success">
+                          Update
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

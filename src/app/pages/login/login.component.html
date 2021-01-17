@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 5rem;">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card mx-auto my-auto text-center border-primary" style="max-width: 40rem">
+        <h2 class="card-header bg-primary text-center text-light">
+          Login
+        </h2>
+        <div class="card-body">
+          <form class="form-group" (ngSubmit)="onLogin()" [formGroup]="loginForm">
+            <span class="text-left"
+              *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
+              <p [ngStyle]="{color: 'red'}">* Required</p>
+            </span>
+            <span class="text-left" *ngIf="loginForm.get('email').hasError('email')">
+              <p [ngStyle]="{color: 'red'}">* Provide a valid email address</p>
+            </span>
+            <input class="form-control mb-4" type="email" placeholder="Email" formControlName="email">
+            <span class="text-left" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+              <p [ngStyle]="{color: 'red'}">* Required</p>
+            </span>
+            <input class="form-control mb-1" type="password" placeholder="Password" formControlName="password">
+            <a class="active mb-4" routerLink="/forgot-password">
+              Forgot Password?
+            </a>
+            <h1></h1>
+            <button class="btn btn-outline-primary mt-4" type="submit" [disabled]="!loginForm.valid">
+              Login
+            </button>
+          </form>
+        </div>
+        <div class="card-footer border-primary bg-transparent">
+          Don't have an account?
+          <a class="active" routerLink="/register">
+            Sign up
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
