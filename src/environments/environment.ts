@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyDsACGOp8GYKYS09fkv8t0Uy1HRCLUqCL8",
-    authDomain: "angular-authentication-34d68.firebaseapp.com",
-    projectId: "angular-authentication-34d68",
-    storageBucket: "angular-authentication-34d68.appspot.com",
-    messagingSenderId: "837097518183",
-    appId: "1:837097518183:web:d41bad1ebcdb6f2e64d0c2"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_API_ID"
   }
 };
 
